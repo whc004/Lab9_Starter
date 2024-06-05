@@ -151,9 +151,13 @@
             console.trace('console.trace');
             break;
           case 'Trigger a Global Error':
-            console.log('Sadly an error happened my friend');
-            boom();
-            //throw new Error('boom');
+            try {
+              boom();
+            } catch (error) {
+              console.error(error)
+            } finally {
+              console.log('Sadly an error happened my friend');
+            }
             break;
         }
       });

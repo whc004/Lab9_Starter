@@ -102,7 +102,98 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    errorBtns.forEach(each => {
+      each.addEventListener('click', () => {
+        let Text = each.textContent;
+        switch (Text) {
+          default:
+            console.log('-----Dont know what to do-----');
+          case 'Console Log':
+            console.log('Console Log Demo');
+            break;
+          case 'Console Error':
+            console.error('Console Error Demo');
+            break;
+          case 'Console Count':
+            console.count('Count Button');
+            break;
+          case 'Console Warn':
+            console.warn('Console Warn Button');
+            break;
+          case 'Console Assert':
+            console.assert(false, 'Console Assert Demo');
+            break;
+          case 'Console Clear':
+            console.clear();
+            break;
+          case 'Console Dir':
+            console.dir(each);
+            break;
+          case 'Console dirxml':
+            console.dirxml(each);
+            break;
+          case 'Console Group Start':
+            console.group('console.group');
+            break;
+          case 'Console Group End':
+            console.groupEnd();
+            break;
+          case 'Console Table':
+            console.table([{ name: 'Wen', num: 110 }, { name: 'Chang', num: 130 }]);
+            break;
+          case 'Start Timer':
+            console.time('Timer Button');
+            break;
+          case 'End Timer':
+            console.timeEnd('Timer Button');
+            break;
+          case 'Console Trace':
+            console.trace('console.trace');
+            break;
+          case 'Trigger a Global Error':
+            console.log('Sadly an error happened my friend');
+            boom();
+            //throw new Error('boom');
+            break;
+        }
+      });
+    });
+
+    //step 4
+    try {
+      let thirdNum = document.querySelector('#third-num').value;
+    } catch (error) {
+      console.log('Step 4. allert for the Error');
+      console.log(error)
+    } finally {
+      console.log('Sadly an error happened my friend');
+    }
+
+    //step 5
+    class CustomError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = 'CustomError';
+      }
+    }
+
+    try {
+      throw new CustomError('This is a custom error');
+    } catch (error) {
+      console.log('Step 5. Custom Error');
+      console.log(error)
+    }
   </script>
+
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({
+      token: "67ea325d20924636baf2d8993892df61",
+      application: "chang"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+
 </body>
 
 </html>
